@@ -5,13 +5,24 @@ using UnityEngine;
 public class s_player_controller : MonoBehaviour
 {
     public float rotationSpeed = 0.7f;
-    int currentPosition = 0;
     public Vector3[] postions;
     public GameObject parent;
+    public float jumpForce = 2.0f;
+    public Vector3 jump;
+
+    Rigidbody rb;
+
+
+
+    int currentPosition = 0;
+    bool canJump;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
         parent.transform.position = postions[currentPosition];
     }
 
@@ -24,6 +35,10 @@ public class s_player_controller : MonoBehaviour
        
     }
 
+    private void OnCollisionStay()
+    {
+        canJump = true;
+    }
 
 
     void RotatePlayer()
@@ -47,6 +62,11 @@ public class s_player_controller : MonoBehaviour
                 currentPosition++;
                 parent.transform.position = postions[currentPosition];
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            canJump = false;
         }
     }
 
