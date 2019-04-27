@@ -10,7 +10,7 @@ public class EnemyMover : MonoBehaviour{
    
     void Update()
     {
-        transform.Translate(Vector3.down * speed * Time.deltaTime); 
+        transform.Translate(Vector3.left * speed * Time.deltaTime); 
     }
 
 
