@@ -15,7 +15,7 @@ public class scrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 offset = new Vector2(0, Time.time * speed);
+        Vector2 offset = new Vector2( (Time.time * speed) - gameObject.transform.position.z, 0);
         GetComponent<Renderer>().material.mainTextureOffset = offset;
     }
 }
