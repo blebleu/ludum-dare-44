@@ -682,6 +682,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: changemenuscene
       objectReference: {fileID: 0}
+    - target: {fileID: 2683529690341654683, guid: 27da86009ffdad842916333c57b8f599,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683529691742074430, guid: 27da86009ffdad842916333c57b8f599,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 270.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683529690756708289, guid: 27da86009ffdad842916333c57b8f599,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 86.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683529691721471279, guid: 27da86009ffdad842916333c57b8f599,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -98.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683529690777284640, guid: 27da86009ffdad842916333c57b8f599,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -276.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2683529691789221614, guid: 27da86009ffdad842916333c57b8f599,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
