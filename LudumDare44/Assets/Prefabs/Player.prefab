@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 645798600299725990}
   - component: {fileID: 3363130045198881886}
   - component: {fileID: 2844864184153143002}
-  - component: {fileID: 6172511967702229793}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &645798600299725990
 Transform:
   m_ObjectHideFlags: 0
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1034960193578254217}
   m_LocalRotation: {x: 0.26202372, y: -0.6567676, z: 0.65676755, w: 0.2620237}
   m_LocalPosition: {x: -0.015084977, y: -0.44481388, z: 0.008800613}
-  m_LocalScale: {x: 1.0397909, y: 1.0397906, z: 21.023256}
+  m_LocalScale: {x: 1.0813825, y: 1.0813823, z: 21.864185}
   m_Children: []
   m_Father: {fileID: 1182724992836585996}
   m_RootOrder: 0
@@ -79,19 +78,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &6172511967702229793
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034960193578254217}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1182724991402329001
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,11 +230,10 @@ MonoBehaviour:
   shop: {fileID: 0}
   particles: {fileID: 0}
   canJump: 0
-  unlockedShield: 1
+  unlockedShield: 0
   shield: {fileID: 1034960193578254217}
   unlockedMagnet: 0
   unlockedDoublePoints: 0
-  unlockedTriplePoints: 0
   unlockedDoubleJump: 0
 --- !u!54 &1182724992836585991
 Rigidbody:

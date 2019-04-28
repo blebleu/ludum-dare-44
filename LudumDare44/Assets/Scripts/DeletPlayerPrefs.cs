@@ -18,6 +18,11 @@ public class DeletPlayerPrefs : MonoBehaviour
     public void delete()
     {
         PlayerPrefs.DeleteAll();
+        GameObject money = GameObject.FindWithTag("Money");
+        money.GetComponent<s_money>().moneyTotal = 0.00f;
+
+
+
     }
 }
 

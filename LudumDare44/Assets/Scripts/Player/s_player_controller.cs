@@ -30,7 +30,7 @@ public class s_player_controller : MonoBehaviour
     public bool unlockedMagnet = false;
     public bool unlockedDoublePoints = false;
     public bool unlockedDoubleJump = false;
-    public bool canDoubleJump = false;
+    bool canDoubleJump = false;
 
 
 
@@ -38,6 +38,27 @@ public class s_player_controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int ismag = PlayerPrefs.GetInt("Magnet", 0);
+        int isdp = PlayerPrefs.GetInt("DP", 0);
+        int isdj = PlayerPrefs.GetInt("DJ", 0);
+        int isshield = PlayerPrefs.GetInt("Shield", 0);
+
+        if (ismag > 0)
+        {
+            unlockedMagnet = true;
+        }
+        if (isdp > 0)
+        {
+            unlockedDoublePoints = true;
+        }
+        if (isdj > 0)
+        {
+            unlockedDoubleJump = true;
+        }
+        if (isshield > 0)
+        {
+            unlockedShield = true;
+        }
         if (unlockedShield)
         {
             shield.SetActive(true);
