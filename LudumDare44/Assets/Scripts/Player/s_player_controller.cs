@@ -10,13 +10,16 @@ public class s_player_controller : MonoBehaviour
     public float jumpForce = 2.0f;
     public Vector3 jump;
     public GameObject endMenu;
-
+    public GameObject shop;
+    private AudioSource jumpSound;
     Rigidbody rb;
 
+    public GameObject particles;
 
 
+    float timeSinceJump = 0;
     int currentPosition = 0;
-    bool canJump;
+    public bool canJump;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +28,7 @@ public class s_player_controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
         parent.transform.position = postions[currentPosition];
+        jumpSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,13 +36,18 @@ public class s_player_controller : MonoBehaviour
     {
         RotatePlayer();
         PlayerMovement();
-       
+        timeSinceJump += Time.deltaTime;
+
+        
        
     }
 
     private void OnCollisionStay()
     {
-        canJump = true;
+        if (timeSinceJump > 1)
+        {
+            canJump = true;
+        }
     }
 
 
@@ -66,9 +75,16 @@ public class s_player_controller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             canJump = false;
+            timeSinceJump = 0;
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            
+
+            jumpSound.Play();
+
+
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,7 +98,10 @@ public class s_player_controller : MonoBehaviour
 
     private void OnDestroy()
     {
+        particles.SetActive(true);
         endMenu.SetActive(true);
     }
+
+    
 
 }

@@ -9,7 +9,7 @@ public class s_pickup : MonoBehaviour
     public float worth = .01f;
     public GameObject money;
     public float rotationSpeed;
-    public AudioSource death;
+    //public AudioSource death;
     float tmpMoney;
     // Start is called before the first frame update
     void Start()

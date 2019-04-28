@@ -23,9 +23,9 @@ public class Spawner : MonoBehaviour
 
 
 
-    void SpawnObjects()
+    void SpawnObjects(int s, int f)
     {
-        int objToSpawn = Random.Range(0, spawnableObjects.Length);
+        int objToSpawn = Random.Range(s, f);
         int locationToSpawn = Random.Range(0, 3);
 
         GameObject tempObj = Instantiate(spawnableObjects[objToSpawn]);
@@ -60,8 +60,8 @@ public class Spawner : MonoBehaviour
         {
 
             yield return new WaitForSeconds(Random.Range(1, 3));
-            SpawnObjects();
-            
+            SpawnObjects(0,2);
+            SpawnObjects(3, 6);
 
 
         }
