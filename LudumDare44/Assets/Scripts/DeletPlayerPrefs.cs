@@ -15,4 +15,9 @@ public class DeletPlayerPrefs : MonoBehaviour
     {
         
     }
+    public void delete()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
+
