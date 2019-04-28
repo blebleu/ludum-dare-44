@@ -15,15 +15,37 @@ public class s_player_controller : MonoBehaviour
     Rigidbody rb;
 
     public GameObject particles;
-
-
     float timeSinceJump = 0;
     int currentPosition = 0;
     public bool canJump;
 
+
+
+    //Pickups
+    public bool unlockedShield = false;
+    public GameObject shield;
+
+
+
+    public bool unlockedMagnet = false;
+    public bool unlockedDoublePoints = false;
+    public bool unlockedDoubleJump = false;
+    public bool canDoubleJump = false;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        if (unlockedShield)
+        {
+            shield.SetActive(true);
+        }
+        
+
+
+
 
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
@@ -47,6 +69,10 @@ public class s_player_controller : MonoBehaviour
         if (timeSinceJump > 1)
         {
             canJump = true;
+            if (unlockedDoubleJump)
+            {
+                canDoubleJump = true;
+            }
         }
     }
 
@@ -73,17 +99,26 @@ public class s_player_controller : MonoBehaviour
                 parent.transform.position = postions[currentPosition];
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            canJump = false;
-            timeSinceJump = 0;
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            
+            if (canJump)
+            {
+                canJump = false;
+                timeSinceJump = 0;
+                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
 
-            jumpSound.Play();
 
+                jumpSound.Play();
+            }
+            else if (canDoubleJump)
+            {
+                canDoubleJump = false;
+                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+
+            }
 
         }
+
 
     }
 
@@ -91,8 +126,15 @@ public class s_player_controller : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(this.gameObject);
-
+            if (shield.activeSelf == true)
+            {
+                Destroy(other.gameObject);
+                shield.SetActive(false);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

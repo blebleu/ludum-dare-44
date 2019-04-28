@@ -110,7 +110,6 @@ MonoBehaviour:
   worth: 0.01
   money: {fileID: 823634331517973673, guid: a7c4d1ccd201c454aa2c33a8c758ee81, type: 3}
   rotationSpeed: 1
-  death: {fileID: 5742004073158424686, guid: b2fb7636b7712874eafc90915331069a, type: 3}
 --- !u!114 &1055776281794474018
 MonoBehaviour:
   m_ObjectHideFlags: 0
