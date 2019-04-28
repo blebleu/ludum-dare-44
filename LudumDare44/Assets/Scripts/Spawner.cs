@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
 
     public GameObject[] spawnableObjects;
     public Vector3[] spawnLocations;
+    int locationToSpawn;
    
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,16 @@ public class Spawner : MonoBehaviour
     void SpawnObjects(int s, int f)
     {
         int objToSpawn = Random.Range(s, f);
-        int locationToSpawn = Random.Range(0, 3);
+
+        if (objToSpawn < 2)
+        {
+            locationToSpawn = Random.Range(0, 3);
+        }
+        else
+        {
+            locationToSpawn = Random.Range(0, 9);
+        }
+        
 
         GameObject tempObj = Instantiate(spawnableObjects[objToSpawn]);
 
