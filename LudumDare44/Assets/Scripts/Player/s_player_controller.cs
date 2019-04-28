@@ -9,6 +9,7 @@ public class s_player_controller : MonoBehaviour
     public GameObject parent;
     public float jumpForce = 2.0f;
     public Vector3 jump;
+    public GameObject endMenu;
 
     Rigidbody rb;
 
@@ -70,5 +71,18 @@ public class s_player_controller : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(this.gameObject);
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        endMenu.SetActive(true);
+    }
 
 }
