@@ -5,32 +5,65 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
-    public GameObject Projectile_DarkSpikePrefab;
-    public float secondsBetweenSpawns;
-    float nextSpawnTime;
-    public float spawnAngleMax;
-
-    Vector2 screenHalfSizeWorldUnits;
-
+    public GameObject[] spawnableObjects;
+    public Vector3[] spawnLocations;
+   
     // Start is called before the first frame update
     void Start()
     {
-        screenHalfSizeWorldUnits = new Vector2 (Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);   
+        StartCoroutine(waitToSpawn());
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
+    }    
 
 
-        if (Time.time > nextSpawnTime)
+
+    void SpawnObjects()
+    {
+        int objToSpawn = Random.Range(0, spawnableObjects.Length);
+        int locationToSpawn = Random.Range(0, 3);
+
+        GameObject tempObj = Instantiate(spawnableObjects[objToSpawn]);
+
+        tempObj.transform.position = spawnLocations[locationToSpawn];
+
+        
+        int spawnExtras = Random.Range(0, 3);
+        switch (spawnExtras)
+           {
+                case 1:
+                    GameObject temp = Instantiate(tempObj);
+                    temp.transform.position = new Vector3(tempObj.transform.position.x + 1.5f, tempObj.transform.position.y, tempObj.transform.position.z);
+                    break;
+                case 2:
+                    GameObject temp1 = Instantiate(tempObj);
+                    temp1.transform.position = new Vector3(tempObj.transform.position.x + 1.5f, tempObj.transform.position.y, tempObj.transform.position.z);
+
+                    GameObject temp2 = Instantiate(tempObj);
+                    temp2.transform.position = new Vector3(temp1.transform.position.x + 1.5f, temp1.transform.position.y, temp1.transform.position.z);
+
+                    break;
+
+        }
+
+    }
+
+
+    IEnumerator waitToSpawn()
+    {
+        while (true)
         {
-         
-            nextSpawnTime = Time.time + secondsBetweenSpawns;
-            float spawnAngle = Random.Range(-spawnAngleMax, spawnAngleMax);
-            Vector2 spawnPosition = new Vector2(Random.Range(-75, 75), screenHalfSizeWorldUnits.y);
-            Instantiate(Projectile_DarkSpikePrefab, spawnPosition, Quaternion.Euler(Vector3.forward * spawnAngle));
+
+            yield return new WaitForSeconds(Random.Range(1, 3));
+            SpawnObjects();
             
+
+
         }
     }
 }
